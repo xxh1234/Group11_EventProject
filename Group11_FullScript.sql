@@ -636,9 +636,9 @@ SELECT
 	COUNT(f.feedback_id) AS TotalFeedbacks,
 	RANK() OVER (ORDER BY AVG(f.rating) DESC) AS RateRank
 FROM Event e
-JOIN Feedback f
+LEFT JOIN Feedback f
 	ON e.event_id = f.event_id
-JOIN Organizer o
+LEFT JOIN Organizer o
 	ON e.organizer_id = o.organizer_id
 GROUP BY 
 	e.event_id,
